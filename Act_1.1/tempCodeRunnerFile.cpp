@@ -1,0 +1,1 @@
+unsigned int actual = 0, next = 1, temp = 0;
