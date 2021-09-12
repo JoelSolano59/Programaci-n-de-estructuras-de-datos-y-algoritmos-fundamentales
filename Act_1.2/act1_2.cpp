@@ -1,4 +1,13 @@
-#include <windows.h>
+/*
+Programación de estructuras de datos y algoritmos fundamentales Gpo. 12
+Joel Isaias Solano Ocampo  A01639289
+Mauricio Cantú Torres      A01633805
+
+Instrucciones de uso:
+1. Compilar el programa.
+2. Disfrutar.
+*/
+
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -6,6 +15,7 @@ using namespace std;
 
 int comp = 0, swaps = 0;
 
+// Complejidad: O(n^2)
 void ordenaIntercambio(int t, vector<int> v){
     int temp;
     for(int i = 0; i < t-1; i++){
@@ -22,6 +32,7 @@ void ordenaIntercambio(int t, vector<int> v){
     }
 }
 
+// Complejidad: O(n^2)
 void ordenaBurbuja(int t, vector<int> v){
     int temp;
     for(int i = 0; i < t-1; i++){
@@ -38,6 +49,7 @@ void ordenaBurbuja(int t, vector<int> v){
     }
 }
 
+// Complejidad: O[nlog(n)]
 void merge(vector<int>& v, int l, int m, int h){
     int n1 = m-l+1;
     int n2 = h-m;
@@ -77,6 +89,7 @@ void merge(vector<int>& v, int l, int m, int h){
     }
 }
 
+// Complejidad: O[nlog(n)]
 void ordenaMerge(vector<int>& v, int l, int h){
     if (l >= h){
         comp++;
@@ -88,10 +101,11 @@ void ordenaMerge(vector<int>& v, int l, int h){
     merge(v, l, m, h);      // Fusion mitades.
 }
 
+// Complejidad: O(n)
 int busquedaSecuencialOrd(vector<int> v, int t, int n) {
     int i = 0; 
     comp = 0;
-        while (i < n && v[i] != n) {
+    while (i < n && v[i] != n) {
         comp++;
         i++;
     }
@@ -101,6 +115,7 @@ int busquedaSecuencialOrd(vector<int> v, int t, int n) {
         return -1;
 }
 
+// Complejidad: O(n)
 int busquedaBinaria(vector<int> v, int t, int n) {
     int low = 0;
     int high = t - 1;
@@ -148,6 +163,7 @@ void realizarTest(vector<int> t){
     }
     // cout << endl;
     comp = 0;
+    swaps = 0;
     cout << "_______________________" << endl << endl;
     cout << "Ordenamiento "; 
     switch (ord){
@@ -171,8 +187,10 @@ void realizarTest(vector<int> t){
     }
     cout << endl << endl;
     cout << "Comparaciones: " << comp << endl;
+    cout << "Swaps: " << swaps << endl;
     cout << "_______________________" << endl << endl;
     comp = 0;
+    swaps = 0;
     cout << "Busqueda "; 
     switch (bus){
     case 1:
@@ -185,6 +203,7 @@ void realizarTest(vector<int> t){
         break;
     }
     cout << "Comparaciones: " << comp << endl;
+    cout << "Swaps: " << swaps << endl;
     cout << "_______________________" << endl << endl;
 }
 
