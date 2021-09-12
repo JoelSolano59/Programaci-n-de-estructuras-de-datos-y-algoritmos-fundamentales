@@ -5,7 +5,6 @@
 using namespace std;
 
 int comp = 0, swaps = 0;
-vector<int> vg;
 
 void ordenaIntercambio(int t, vector<int> v){
     int temp;
@@ -39,7 +38,7 @@ void ordenaBurbuja(int t, vector<int> v){
     }
 }
 
-void merge(vector<int> v, int l, int m, int h){
+void merge(vector<int>& v, int l, int m, int h){
     int n1 = m-l+1;
     int n2 = h-m;
     // crear vectores L y R
@@ -76,10 +75,9 @@ void merge(vector<int> v, int l, int m, int h){
         j++;
         k++;
     }
-    vg = v;
 }
 
-void ordenaMerge(vector<int> v, int l, int h){
+void ordenaMerge(vector<int>& v, int l, int h){
     if (l >= h){
         comp++;
         return;
@@ -164,7 +162,7 @@ void realizarTest(vector<int> t){
     case 3:
         cout << "Merge:" << endl; 
         ordenaMerge(v, 0, tam);
-        for (const auto &i : vg){
+        for (const auto &i : v){
             cout << i << ", ";
         }
         break;
