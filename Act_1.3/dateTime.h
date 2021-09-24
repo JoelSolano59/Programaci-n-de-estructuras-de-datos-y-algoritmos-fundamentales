@@ -20,9 +20,7 @@ class dateTime {
   
   private:
     std::vector<std::string> meses = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-    // Struct que contiene todos los datos de la fecha-hora
     struct tm dateStruct;
-    // Unix timestamp (segundos transcurridos desde 00:00 hrs, Jan 1, 1970 UTC)
     time_t date;
 
 };
@@ -37,8 +35,7 @@ dateTime::dateTime(){
     if (meses[i]==mes)
       dateStruct.tm_mon = i;
   }
-  dateStruct.tm_year = 2021 - 1900;  // Asumimos el año 2021
-  // Obtener el Unix timestamp a partir del struct tm anterior 
+  dateStruct.tm_year = 2021 - 1900;
   date = mktime(&dateStruct);
 }
 
@@ -52,8 +49,7 @@ dateTime::dateTime(std::string mes, int dia, int horas, int minutos, int segundo
     if (meses[i]==mes)
       dateStruct.tm_mon = i;
   }
-  dateStruct.tm_year = 2021 - 1900;  // Asumimos el año 2021
-  // Obtener el Unix timestamp a partir del struct tm anterior 
+  dateStruct.tm_year = 2021 - 1900;
   date = mktime(&dateStruct);
 }
 

@@ -18,19 +18,12 @@ Instrucciones de uso:
 #include "dateTime.h"
 using namespace std;
 
-// Creeamos una estructura para los reegistros de la bitacora
+// Creamos una estructura para los registros de la bitacora
 struct log{
     dateTime dateT;
     string dateS;
     string errorM;
 } logs;
-
-// Funcion para intercambiar el valor de dos logs
-void swap(log* x, log* y){
-    log temp = *x;
-    *x = *y;
-    *y = temp;
-}
 
 // Funcion para obtener los registros de bitacora.txt
 void obtenerBitacora(vector<log> &v, int &n){
@@ -59,24 +52,28 @@ void obtenerBitacora(vector<log> &v, int &n){
 }
 
 // Funcion para particionar el vector, usada en la funcion quickSort
-int partition(vector<log> &v, int l, int h){
+int particion(vector<log> &v, int l, int h){
     dateTime p = v[h].dateT;
     int i = (l-1);
     for (int j = l; j <= h-1; j++){
         dateTime di = v[j].dateT;
         if (di <= p){
             i++;
-            swap(&v[i], &v[j]);
+            log temp = v[i];
+            v[i] = v[j];
+            v[j] = temp;
         }
     }
-    swap(&v[i+1], &v[h]);
+    log temp = v[i+1];
+    v[i+1] = v[h];
+    v[h] = temp;
     return (i+1);
 }
 
 // Funcion para ordenar el vector de registros de bitacora
 void quickSort(vector<log> &v, int l, int h){
     if (l < h){
-        int p = partition(v, l, h);
+        int p = particion(v, l, h);
         quickSort(v, l, p-1);
         quickSort(v, p+1, h);
     }
